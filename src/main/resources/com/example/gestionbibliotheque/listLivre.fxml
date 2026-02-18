@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionbibliotheque.HelloController">
+   <children>
+      <Label layoutX="159.0" text="Liste des Livres">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font></Label>
+       <Label layoutX="26.0" layoutY="43.0" text="Matricule:">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Label>
+       <Label layoutX="21.0" layoutY="112.0" text="Prenom:">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Label>
+       <Label layoutX="21.0" layoutY="170.0" text="Nom:">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Label>
+       <Label layoutX="19.0" layoutY="228.0" text="Email:">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Label>
+       <TextField fx:id="txtMatricule" layoutX="19.0" layoutY="82.0" />
+       <TextField fx:id="txtPrenom" layoutX="19.0" layoutY="142.0" />
+       <TextField fx:id="txtNom" layoutX="19.0" layoutY="200.0" />
+       <TextField fx:id="txtEmail" layoutX="19.0" layoutY="256.0" />
+       <Label fx:id="message" layoutX="171.0" layoutY="219.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
+      <TableView fx:id="tableLivre" layoutX="218.0" layoutY="82.0" prefHeight="200.0" prefWidth="562.0" style="-fx-background-color: black;">
+        <columns>
+          <TableColumn prefWidth="61.333343505859375" text="ID" />
+          <TableColumn prefWidth="120.66667175292969" text="ISBN" />
+            <TableColumn prefWidth="183.0" text="Titre" />
+            <TableColumn prefWidth="195.33334350585938" text="Auteur" />
+        </columns>
+      </TableView>
+      <Button layoutX="572.0" layoutY="324.0" mnemonicParsing="false" text="Emprunter">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
+       <Button layoutX="126.0" layoutY="324.0" mnemonicParsing="false" onAction="#add" text="Ajouter">
+           <font>
+               <Font size="20.0" />
+           </font>
+       </Button>
+   </children>
+</AnchorPane>

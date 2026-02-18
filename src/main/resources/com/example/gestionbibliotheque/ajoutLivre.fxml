@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Font?>
+<AnchorPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.gestionbibliotheque.Controller.LivreController" prefHeight="400.0" prefWidth="600.0">
+    <children>
+        <Label layoutX="159.0" text="Ajout d'etudiant">
+            <font>
+                <Font name="System Bold" size="40.0" />
+            </font></Label>
+        <Pane layoutX="163.0" layoutY="74.0" prefHeight="317.0" prefWidth="342.0" style="-fx-background-color: black;">
+            <children>
+                <Label layoutX="21.0" layoutY="25.0" text="Matricule:" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="21.0" layoutY="75.0" text="Prenom:" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="21.0" layoutY="125.0" text="Nom:" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <Label layoutX="21.0" layoutY="175.0" text="Email:" textFill="WHITE">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Label>
+                <TextField fx:id="txtMatricule" layoutX="158.0" layoutY="25.0" />
+                <TextField fx:id="txtPrenom" layoutX="158.0" layoutY="75.0" />
+                <TextField fx:id="txtNom" layoutX="158.0" layoutY="125.0" />
+                <TextField fx:id="txtEmail" layoutX="158.0" layoutY="175.0" />
+                <Label fx:id="message" layoutX="171.0" layoutY="219.0" prefHeight="17.0" prefWidth="0.0" textFill="RED" />
+            </children></Pane>
+    </children>
+</AnchorPane>

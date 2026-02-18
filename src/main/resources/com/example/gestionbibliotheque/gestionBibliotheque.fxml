@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionbibliotheque.HelloController">
+   <top>
+      <Pane prefHeight="62.0" prefWidth="600.0" style="-fx-background-color: black;" BorderPane.alignment="CENTER">
+         <children>
+            <MenuBar layoutX="195.0" layoutY="19.0">
+              <menus>
+                <Menu mnemonicParsing="false" text="Accueil">
+                </Menu>
+                <Menu mnemonicParsing="false" text="Etudiants">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#showListEtudiant" text="Liste Etudiants" />
+                    </items>
+                </Menu>
+                  <Menu mnemonicParsing="false" text="Livres">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#showListLivre" text="Liste Livres" />
+                      </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Emprunts">
+                      <items>
+                          <MenuItem mnemonicParsing="false" onAction="#showListEmprunt" text="Liste Emprunts" />
+                      </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+         </children>
+      </Pane>
+   </top>
+    <center>
+        <StackPane fx:id="stackPane" />
+    </center>
+</BorderPane>
