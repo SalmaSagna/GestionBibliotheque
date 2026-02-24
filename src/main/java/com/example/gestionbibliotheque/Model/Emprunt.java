@@ -12,9 +12,11 @@ public class Emprunt {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private LocalDate dateEmprunt;
+    @Column(nullable = false)
     private LocalDate dateRetour;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idEtudiant", nullable = false)
     private Etudiant etudiant;
     @OneToOne

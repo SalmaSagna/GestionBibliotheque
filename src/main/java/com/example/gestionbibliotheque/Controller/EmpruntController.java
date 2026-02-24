@@ -1,21 +1,31 @@
 package com.example.gestionbibliotheque.Controller;
 
 import com.example.gestionbibliotheque.DAO.EmpruntDAO;
+import com.example.gestionbibliotheque.DAO.EtudiantDAO;
 import com.example.gestionbibliotheque.Model.Emprunt;
 import com.example.gestionbibliotheque.Model.Etudiant;
 import com.example.gestionbibliotheque.Utilitaire.Navigation;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.StackPane;
+import com.lowagie.text.*;
+import com.lowagie.text.pdf.PdfWriter;
+import java.io.FileOutputStream;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 import java.util.List;
 
 public class EmpruntController {
     EmpruntDAO dbEmprunt = new EmpruntDAO();
+
+    EtudiantDAO dbEtudiant = new EtudiantDAO();
 
     @FXML
     private TableView<Emprunt> tableEmprunt;
@@ -45,9 +55,16 @@ public class EmpruntController {
     private StackPane stackPane;
 
     @FXML
+    private ComboBox<String> searchMatricule;
+
+    private ObservableList<Emprunt> emprunts;
+
+    private ObservableList<String> listMatricule;
+
+    @FXML
     private void initialize(){
         if(tableEmprunt!=null){
-            List<Emprunt> emprunts = dbEmprunt.getAllEmprunts();
+            emprunts = FXCollections.observableList(dbEmprunt.getAllEmprunts());
             colId.setCellValueFactory(new PropertyValueFactory<>("id"));
             colISBN.setCellValueFactory(cellData ->
                     new SimpleStringProperty(cellData.getValue().getLivre().getIsbn()));
@@ -61,7 +78,28 @@ public class EmpruntController {
             });
             colDateEmprunt.setCellValueFactory(new PropertyValueFactory<>("dateEmprunt"));
             colDateRetour.setCellValueFactory(new PropertyValueFactory<>("dateRetour"));
-            tableEmprunt.setItems(FXCollections.observableList(emprunts));
+            tableEmprunt.setItems(emprunts);
+
+            listMatricule=FXCollections.observableList(dbEtudiant.getAllMatricule());
+            searchMatricule.setItems(listMatricule);
+        }
+    }
+
+    private Etudiant getSearchEtudiant(){
+        return dbEtudiant.getStudentByMatricule(searchMatricule.getValue());
+    }
+
+    @FXML
+    private void refreshTable(){
+        emprunts.clear();
+        emprunts = FXCollections.observableList(dbEmprunt.getEmpruntsByStudent(getSearchEtudiant().getId()));
+        tableEmprunt.setItems(emprunts);
+    }
+
+    @FXML
+    private void searchEmpruntByStudent(){
+        if(searchMatricule!=null){
+            refreshTable();
         }
     }
 }

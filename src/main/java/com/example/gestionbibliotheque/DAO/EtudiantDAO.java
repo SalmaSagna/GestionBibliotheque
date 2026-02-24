@@ -19,6 +19,15 @@ public class EtudiantDAO {
         return em.find(Etudiant.class,id);
     }
 
+    public Etudiant getStudentByMatricule(String matricule){
+        return em.createQuery("SELECT e from Etudiant e WHERE e.matricule=:matricule",Etudiant.class)
+                .setParameter("matricule",matricule).getSingleResult();
+    }
+
+    public List<String> getAllMatricule(){
+        return em.createQuery("SELECT matricule FROM Etudiant",String.class).getResultList();
+    }
+
     public void updateStudent(Etudiant e){
         em.getTransaction().begin();
         em.merge(e);

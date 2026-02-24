@@ -12,7 +12,8 @@ module com.example.gestionbibliotheque {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires static lombok;
-    requires java.persistence;
+    requires java.persistence;requires com.github.librepdf.openpdf;//
+    requires jakarta.mail;//
     exports com.example.gestionbibliotheque.Model;
     opens com.example.gestionbibliotheque.Controller to javafx.fxml;
     requires org.hibernate.orm.core;
